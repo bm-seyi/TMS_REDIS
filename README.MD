@@ -1,4 +1,4 @@
-# Redis Docker Image with Custom Configuration
+# TMS REDIS
 
 This repository contains a Dockerfile for building a Redis image with a custom configuration file. The image is based on the official Redis `8.0-M03` image and includes a pre-configured `redis.conf` file.
 
@@ -55,21 +55,17 @@ The following settings are used to secure and configure network access:
 bind 127.0.0.1 192.168.1.10
 protected-mode yes
 port 6379
-requirepass yoursecurepassword
 ```
 
 - `bind`: Defines the IP addresses Redis will listen on.
 - `protected-mode`: Ensures Redis is secure by default.
 - `port`: Redis port (default is 6379).
-- `requirepass`: Password required for accessing the server.
 
 ### Performance
 Optimized for better performance:
 
 ```conf
 maxmemory 2gb
-maxmemory-policy allkeys-lru
-appendonly yes
 appendfsync everysec
 save 900 1
 save 300 10
@@ -107,11 +103,9 @@ slowlog-max-len 128
 ### High Availability
 
 ```conf
-masterauth yoursecurepassword
 replica-read-only yes
 ```
 
-- `masterauth`: Password for authenticating with the master server.
 - `replica-read-only`: Ensures replicas are read-only.
 
 
